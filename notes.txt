@@ -1,0 +1,116 @@
+CoderManagement
+
+//
+
+// 1. Create a new user (with user's name)
+/**
+ * @route POST  /users
+ * @description Create a new user
+ * @requiredBody: name, id
+ */
+
+// 2. Get all users (with filters)
+/**
+ * @route GET /users
+ * @description Get list of users
+ * @allowedQueries: name, id
+ */
+
+// 3. Search (for an employee) by name/id
+/**
+ * @route GET /users/:id  OR /users?name=""
+ * @description Get user by name/id
+ * @allowedQueries: name, id
+ */
+
+// 4. Get all tasks of 1 user by name
+/**
+ * @route GET /users?name=""
+ * @description show details of user like tasks,...
+ */
+
+// 5. Create a new task
+/**
+ * @route POST /tasks/
+ * @description Create a new task
+ * @requiredBody: id, title, description, assignee, status, createdAt, updatedAt
+ */
+
+// 6. get list of tasks
+// Browse tasks with filter (sort) by
+// status, createdAt, updatedAt
+/**
+ * @route GET /tasks/
+ * @description list of tasks and sort
+ */
+
+// 7. Get a single task by id
+/**
+ * @route GET /tasks/:id
+ * @description show details of task
+ */
+
+// 8. Assign a task to a user or unassign ?
+// edit a task
+/**
+ * @route PUT /tasks/
+ * @description
+ */
+
+// 9. Update (the status of) a task. // edit a task
+
+// 5 types of status:
+// pending: work not started
+// working: is working on it
+// review: waiting for review result
+// done : review is finished with satisfaction
+// archive: package as references for future
+/**
+ * @route PUT /tasks
+ * @description
+ */
+
+// 10. (Soft) delete a task
+/**
+ * @route DELETE /tasks
+ * @description delete a task
+ */
+// confirm before delete
+
+
+1. Create a new user with user's name
+
+2. Get all users with filters
+
+3. Search for an employee by name
+
+4. Get all tasks of 1 user by name
+
+5. Create a task
+
+6. get list of tasks
+Browse tasks with filter
+status, createdAt,updatedAt
+
+7. Get a single task by id
+
+8. Assign a task to a user or unassign ?
+
+9. Update the status of a task.
+
+5 types of status: 
+pending: work not started
+working: is working on it
+review: waiting for review result
+done: review is finished with satisfaction
+archive: package as references for future
+
+10. Soft delete a task.
+
+11. input validation
+
+express-validator and apply further API request input control:
+Create user request must check body for : existence, including name , name's value is a valid string.
+Create task request must check body for : existence, and other requirements per task schema.
+All routes that require _id , must be checked for its existence and whether it is a mongo object id.
+
