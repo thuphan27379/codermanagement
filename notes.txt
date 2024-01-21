@@ -1,63 +1,62 @@
 CoderManagement
 
-//
-
-// 1. Create a new user (with user's name)
+// 1. Create a new user (with user's name) !!! name sai
 /**
  * @route POST  /users
- * @description Create a new user
+ * @description: Create a new user
  * @requiredBody: name, id
  */
 
-// 2. Get all users (with filters)
+// 2. Get all users (with filters)          OK
 /**
- * @route GET /users
- * @description Get list of users
+ * @route GET   /users
+ * @description: Get list of users
+ * @allowedQueries: name, id,...
+ */
+
+// 3. Search (for an employee) by name/id     OK -  also show tasks of that user
+/**
+ * @route GET /users?name= OR /users/:id
+ * @description: Get user by name/id
  * @allowedQueries: name, id
  */
 
-// 3. Search (for an employee) by name/id
+// 4. Get all tasks of 1 user by name 
 /**
- * @route GET /users/:id  OR /users?name=""
- * @description Get user by name/id
- * @allowedQueries: name, id
+ * @route GET /users?name=
+ * @description: show details of user with tasks,...
  */
 
-// 4. Get all tasks of 1 user by name
-/**
- * @route GET /users?name=""
- * @description show details of user like tasks,...
- */
-
-// 5. Create a new task
+//----------------------------------------------------
+// 5. Create a new task                     OK
 /**
  * @route POST /tasks/
- * @description Create a new task
+ * @description: Create a new task
  * @requiredBody: id, title, description, assignee, status, createdAt, updatedAt
  */
 
-// 6. get list of tasks
+// 6. get list of tasks                     OK - not can sort yet
 // Browse tasks with filter (sort) by
 // status, createdAt, updatedAt
 /**
  * @route GET /tasks/
- * @description list of tasks and sort
+ * @description: list of tasks and sort
  */
 
-// 7. Get a single task by id
+// 7. Get a single task by id         !!!!!!
 /**
  * @route GET /tasks/:id
- * @description show details of task
+ * @description: show details of task
  */
 
-// 8. Assign a task to a user or unassign ?
-// edit a task
+// 8. Assign a task to a user or unassign ???
+// edit a task OR user ?
 /**
- * @route PUT /tasks/
- * @description
+ * @route PUT /tasks/:id
+ * @description: edit assignee 
  */
 
-// 9. Update (the status of) a task. // edit a task
+// 9. Update (the status of) a task. // edit a task ???
 
 // 5 types of status:
 // pending: work not started
@@ -67,15 +66,17 @@ CoderManagement
 // archive: package as references for future
 /**
  * @route PUT /tasks
- * @description
+ * @description: choose a status
  */
 
-// 10. (Soft) delete a task
+// 10. (Soft) delete a task         !!!!!!!
 /**
  * @route DELETE /tasks
- * @description delete a task
+ * @description: delete a task
  */
-// confirm before delete
+
+
+
 
 
 1. Create a new user with user's name

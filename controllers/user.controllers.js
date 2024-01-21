@@ -7,7 +7,7 @@ const userController = {};
 userController.createUser = async (req, res, next) => {
   //in real project you will getting info from req
   const info = {
-    name: "user",
+    name: "",
   };
   try {
     //always remember to control your inputs
@@ -29,6 +29,28 @@ userController.createUser = async (req, res, next) => {
 
 //Get all Users
 userController.getAllUsers = async (req, res, next) => {
+  //in real project you will getting condition from from req then construct the filter object for query
+  // empty filter mean get all
+  const filter = {};
+  try {
+    //mongoose query
+    const listOfFound = await User.find(filter);
+    sendResponse(
+      res,
+      200,
+      true,
+      { data: listOfFound },
+      null,
+      "Found list of Users success"
+    );
+  } catch (err) {
+    next(err);
+  }
+};
+
+// Search (for an employee) by name
+//  @route GET /users/:id  OR /users?name=""
+userController.getUserByName = async (req, res, next) => {
   //in real project you will getting condition from from req then construct the filter object for query
   // empty filter mean get all
   const filter = {};

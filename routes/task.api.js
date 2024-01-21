@@ -3,6 +3,9 @@ const router = express.Router();
 const {
   createTask,
   getAllTasks,
+  editTask,
+  deleteTask,
+  getSingleTask,
 } = require("../controllers/task.controllers.js");
 
 /**
@@ -10,6 +13,12 @@ const {
  * @description get list of Tasks
  */
 router.get("/", getAllTasks);
+
+/**
+ * @route GET /tasks/:id
+ * @description get list of Tasks & update status & assign/unassign
+ */
+router.get("/tasks/:id", getSingleTask);
 
 /**
  * @route POST /tasks
@@ -21,14 +30,13 @@ router.post("/", createTask);
  * @route PUT /tasks
  * @description //Update a task
  */
-router.post("/", editTask);
+router.put("/", editTask);
 
 /**
  * @route DELETE /tasks
  * @description Delete task
  */
-router.post("/", deleteTask);
+router.delete("/", deleteTask);
 
 //
-const taskRouter = require("./task.api.js");
-router.use("/tasks", taskRouter);
+module.exports = router;

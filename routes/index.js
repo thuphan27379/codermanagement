@@ -28,16 +28,15 @@ router.get("/template/:test", async (req, res, next) => {
   }
 });
 
-// // users
-// const usersApi = require("./user.api.js");
-// router.use("/users", usersApi);
+// users
+const usersApi = require("./user.api.js");
+router.use("/users", usersApi);
 
-// // tasks
-// const taskApi = require("./task.api.js");
-// router.use("/task", taskApi);
+// tasks
+const taskApi = require("./task.api.js");
+router.use("/tasks", taskApi);
 
 // API endpoint:
-
 // 1. Create a new user (with user's name)
 /**
  * @route POST  /users
@@ -102,7 +101,6 @@ router.get("/template/:test", async (req, res, next) => {
 // router.put("/tasks/:id", editTask);
 
 // 9. Update (the status of) a task. // edit a task
-
 // 5 types of status:
 // pending: work not started
 // working: is working on it
@@ -113,7 +111,7 @@ router.get("/template/:test", async (req, res, next) => {
  * @route PUT /tasks
  * @description
  */
-// router.put("/tasks/:id", editTasks);
+// router.put("/tasks/:id", editTask);
 
 // 10. (Soft) delete a task
 /**

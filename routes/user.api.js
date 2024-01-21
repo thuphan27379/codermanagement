@@ -3,6 +3,7 @@ const router = express.Router();
 const {
   createUser,
   getAllUsers,
+  getUserByName,
 } = require("../controllers/user.controllers.js");
 
 /**
@@ -17,5 +18,10 @@ router.get("/", getAllUsers);
  */
 router.post("/", createUser);
 
-const userRouter = require("./user.api.js");
-router.use("/user", userRouter);
+/**
+ *  @route GET /users?name=Mr A
+ *  @description Get user by name & get all details of user (tasks)
+ */
+router.get("/users?name=Mr A", getUserByName);
+
+module.exports = router;
