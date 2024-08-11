@@ -3,7 +3,7 @@ const Task = require("../models/Task.js");
 
 const taskController = {};
 
-//Create a new task
+//Create a new task OK
 taskController.createTask = async (req, res, next) => {
   //in real project you will getting info from req
   const info = req.body;
@@ -27,7 +27,7 @@ taskController.createTask = async (req, res, next) => {
   }
 };
 
-//Get all tasks
+//Get all tasks OK
 taskController.getAllTasks = async (req, res, next) => {
   //in real project you will getting condition from from req then construct the filter object for query
   // empty filter mean get all
@@ -48,18 +48,21 @@ taskController.getAllTasks = async (req, res, next) => {
   }
 };
 
-//Get all details of single task
+//Get all details of single task OK
 taskController.getSingleTask = async (req, res, next) => {
   //in real project you will getting condition from from req then construct the filter object for query
   // empty filter mean get all
-  res.send();
+  // res.send();
   const taskId = req.params.id;
   console.log(taskId);
 
-  const filter = {};
+  const filter = { _id: taskId };
+
   try {
     //mongoose query
     const listOfFound = await Task.find(filter);
+    console.log(listOfFound);
+
     sendResponse(
       res,
       200,
@@ -73,13 +76,14 @@ taskController.getSingleTask = async (req, res, next) => {
   }
 };
 
-//Update a task
+//Update a task OK
 taskController.editTask = async (req, res, next) => {
   //in real project you will getting id from req. For updating and deleting, it is recommended for you to use unique identifier such as _id to avoid duplication
   //you will also get updateInfo from req
   // empty target and info mean update nothing
-  const targetId = null;
-  const updateInfo = {}; //req.body
+  const targetId = req.params.id;
+  const updateInfo = req.body; //req.body
+  console.log(updateInfo);
 
   //options allow you to modify query. e.g new true return latest update of data
   const options = { new: true };
@@ -100,23 +104,22 @@ taskController.editTask = async (req, res, next) => {
   }
 };
 
-//Delete a task
+//Delete a task OK
 taskController.deleteTask = async (req, res, next) => {
   //in real project you will getting id from req. For updating and deleting, it is recommended for you to use unique identifier such as _id to avoid duplication
-
   // empty target mean delete nothing
-  const targetId = null;
+  const targetId = req.params.id;
   //options allow you to modify query. e.g new true return latest update of data
   const options = { new: true };
   try {
     //mongoose query
-    const updated = await Task.findByIdAndDelete(targetId, options);
+    const deleted = await Task.findByIdAndDelete(targetId, options);
 
     sendResponse(
       res,
       200,
       true,
-      { data: updated },
+      { data: deleted },
       null,
       "Delete task success"
     );

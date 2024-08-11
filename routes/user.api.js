@@ -22,6 +22,6 @@ router.post("/", createUser);
  *  @route GET /users?name=Mr A
  *  @description Get user by name & get all details of user (tasks)
  */
-router.get("/users?name=Mr A", getUserByName);
+// router.get("/", getUserByName);
 
 module.exports = router;
